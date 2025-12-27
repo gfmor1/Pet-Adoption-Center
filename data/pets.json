@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "ownerUsername": "demo",
+    "animal": "dog",
+    "breed": "golden-retriever",
+    "ageGroup": "young",
+    "gender": "male",
+    "compatibility": [
+      "dogs",
+      "children"
+    ],
+    "description": "Friendly, playful, and loves long walks.",
+    "imageUrl": "/images/dog1.jpg",
+    "status": "available",
+    "createdAt": "2025-01-01T00:00:00.000Z"
+  },
+  {
+    "id": 2,
+    "ownerUsername": "demo",
+    "animal": "cat",
+    "breed": "persian",
+    "ageGroup": "adult",
+    "gender": "female",
+    "compatibility": [
+      "cats"
+    ],
+    "description": "Calm indoor cat who enjoys naps and brushes.",
+    "imageUrl": "/images/cat1.jpg",
+    "status": "available",
+    "createdAt": "2025-01-02T00:00:00.000Z"
+  },
+  {
+    "id": 3,
+    "ownerUsername": "Gianfranco12345",
+    "animal": "dog",
+    "breed": "lock",
+    "ageGroup": "young",
+    "gender": "male",
+    "compatibility": [
+      "dogs",
+      "cats",
+      "children"
+    ],
+    "description": "Lock for dog have a",
+    "imageUrl": "/images/dog2.svg",
+    "status": "available",
+    "createdAt": "2025-12-27T20:56:39.596Z"
+  }
+]

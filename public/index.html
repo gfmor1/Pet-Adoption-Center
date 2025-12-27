@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Paw & Home Pro</title>
+  <link rel="stylesheet" href="/css/styles.css"/>
+  <script src="/js/api.js" defer></script>
+  <script src="/js/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap row">
+      <div class="brand">
+        <div class="logo">🐾</div>
+        <div>
+          <div class="title">Paw & Home Pro</div>
+          <div class="sub">Browse, list, and manage pet adoption listings</div>
+        </div>
+      </div>
+
+      <div class="userbox">
+        <div id="authStatus" class="pill pill-muted">Checking login...</div>
+        <button id="btnLogout" class="btn" type="button">Logout</button>
+      </div>
+    </div>
+
+    <nav class="tabs wrap">
+      <button class="tab active" data-view="browse">Browse</button>
+      <button class="tab" data-view="add">List a Pet</button>
+      <button class="tab" data-view="auth">Login/Register</button>
+    </nav>
+  </header>
+
+  <main class="wrap main">
+    <div id="toast" class="toast hidden"></div>
+
+    <section id="view-browse" class="view">
+      <div class="panel">
+        <h1>Browse Pets</h1>
+        <p class="muted">Filters are server-backed. If something breaks, it shows an error instead of silently failing.</p>
+
+        <form id="filterForm" class="grid" autocomplete="off">
+          <div>
+            <label>Animal</label>
+            <select name="animal">
+              <option value="">Any</option>
+              <option value="dog">Dog</option>
+              <option value="cat">Cat</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Age Group</label>
+            <select name="ageGroup">
+              <option value="">Any</option>
+              <option value="puppy/kitten">Puppy/Kitten</option>
+              <option value="young">Young</option>
+              <option value="adult">Adult</option>
+              <option value="senior">Senior</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Gender</label>
+            <select name="gender">
+              <option value="">Any</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Breed (slug)</label>
+            <input name="breed" placeholder="any or golden-retriever"/>
+          </div>
+
+          <div>
+            <label>Status</label>
+            <select name="status">
+              <option value="available">Available</option>
+              <option value="">Any</option>
+              <option value="adopted">Adopted</option>
+            </select>
+          </div>
+
+          <div class="compat">
+            <label>Compatibility</label>
+            <label><input type="checkbox" name="compat" value="dogs"/> Dogs</label>
+            <label><input type="checkbox" name="compat" value="cats"/> Cats</label>
+            <label><input type="checkbox" name="compat" value="children"/> Children</label>
+          </div>
+
+          <div class="actions">
+            <button class="btn primary" type="submit">Apply</button>
+            <button class="btn" id="btnReset" type="button">Reset</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="panel">
+        <div class="rowBetween">
+          <h2>Results</h2>
+          <div id="count" class="pill pill-muted">0 pets</div>
+        </div>
+        <div id="cards" class="cards"></div>
+      </div>
+    </section>
+
+    <section id="view-add" class="view hidden">
+      <div class="panel">
+        <h1>List a Pet</h1>
+        <p class="muted">Requires login. Includes validation and clean error messages.</p>
+
+        <form id="addForm" class="grid">
+          <div>
+            <label>Animal</label>
+            <select name="animal" required>
+              <option value="">Select</option>
+              <option value="dog">Dog</option>
+              <option value="cat">Cat</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Breed (slug)</label>
+            <input name="breed" required placeholder="golden-retriever"/>
+          </div>
+
+          <div>
+            <label>Age Group</label>
+            <select name="ageGroup" required>
+              <option value="">Select</option>
+              <option value="puppy/kitten">Puppy/Kitten</option>
+              <option value="young">Young</option>
+              <option value="adult">Adult</option>
+              <option value="senior">Senior</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Gender</label>
+            <select name="gender" required>
+              <option value="">Select</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+
+          <div class="compat">
+            <label>Compatibility</label>
+            <label><input type="checkbox" name="compatibility" value="dogs"/> Dogs</label>
+            <label><input type="checkbox" name="compatibility" value="cats"/> Cats</label>
+            <label><input type="checkbox" name="compatibility" value="children"/> Children</label>
+          </div>
+
+          <div>
+            <label>Image URL (optional)</label>
+            <input name="imageUrl" placeholder="/images/dog3.svg"/>
+          </div>
+
+          <div class="full">
+            <label>Description</label>
+            <textarea name="description" required placeholder="Temperament, ideal home, and any important notes (10-300 chars)."></textarea>
+          </div>
+
+          <div class="actions">
+            <button class="btn primary" type="submit">Create Listing</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section id="view-auth" class="view hidden">
+      <div class="panel">
+        <h1>Login/Register</h1>
+
+        <div class="split">
+          <form id="registerForm" class="box">
+            <h2>Register</h2>
+            <label>Username</label>
+            <input name="username" required placeholder="3-20 chars, letters/digits/_"/>
+            <label>Password</label>
+            <input name="password" type="password" required placeholder=">=6, include letters + digits"/>
+            <div class="actions">
+              <button class="btn primary" type="submit">Register</button>
+            </div>
+          </form>
+
+          <form id="loginForm" class="box">
+            <h2>Login</h2>
+            <label>Username</label>
+            <input name="username" required/>
+            <label>Password</label>
+            <input name="password" type="password" required/>
+            <div class="actions">
+              <button class="btn primary" type="submit">Login</button>
+            </div>
+          </form>
+        </div>
+
+        <p class="muted tiny">
+          Portfolio note: Passwords are hashed, sessions are httpOnly, and all endpoints return clean JSON errors.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap footer">
+    <div class="muted tiny">Built with Node + Express. Static assets served correctly. No broken Browse page.</div>
+  </footer>
+</body>
+</html>

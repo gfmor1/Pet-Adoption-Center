@@ -1,0 +1,12 @@
+[
+  {
+    "username": "Gianfranco123",
+    "passwordHash": "$2a$10$pbhYm6AN7dFCtTTZSAhIyOUFgMfgfMD7ZUS48hS14DYPXn5b1pA0u",
+    "createdAt": "2025-12-24T04:33:41.642Z"
+  },
+  {
+    "username": "Gianfranco12345",
+    "passwordHash": "$2a$10$Azjv0jeCx45QcW7i1sXgf.kEUwB3.dGyNP0.WodYFjf9ES/Qf0gES",
+    "createdAt": "2025-12-27T20:55:49.875Z"
+  }
+]
