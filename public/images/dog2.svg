@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <rect width="900" height="500" fill="#0b1325"/>
+  <rect x="120" y="140" width="660" height="260" rx="40" fill="#60a5fa"/>
+  <text x="70" y="90" fill="#e5e7eb" font-size="44" font-family="Arial">Dog Listing Image</text>
+</svg>

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="500" viewBox="0 0 900 500">
+  <rect width="900" height="500" fill="#0b1325"/>
+  <polygon points="200,160 700,160 450,420" fill="#22c55e"/>
+  <text x="70" y="90" fill="#e5e7eb" font-size="44" font-family="Arial">Cat Listing Image</text>
+</svg>
